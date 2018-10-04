@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -29,7 +29,7 @@
      </div>
    </div>
  </div>
-</body>
+</body> -->
 <!-- <body>
 <nav class="navbar navbar-inverse" style="background-color: ">
   <div class="container-fluid">
@@ -77,4 +77,50 @@
   </div>
 </nav> -->
 
-</html> --> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'allimages' %}">instagram</a>
+    </div>
+<div class="col-sm-6 col-md-6">
+            {% if user.is_authenticated %}
+            <ul>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                          <span class="caret"></span>
+                      </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="{%url 'allimages'%}">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">Post</a>
+                  </li>
+                  <li>
+                    <a href="/accounts/password/change">profile</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            {% else %}
+            <li>
+              <a class='btn btn-default' href="/accounts/login">Login</a>
+            </li>
+
+            {% endif %}
+          </div>
+  </div>
+</nav>
+</body>
+</html>

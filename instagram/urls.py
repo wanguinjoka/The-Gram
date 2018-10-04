@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns=[
     url('^$', views.all_images, name ='allimages'),
+    
     ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
