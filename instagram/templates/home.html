@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 </head>
+-->
 {% block content %}
 {{block.super}} -->
 
@@ -27,6 +28,8 @@
 	</header>
 
 	<section class="container">
+		<!--loop through images-->
+		{% for image_item in images %}
 		<div class="card">
 		<div class="card-header">
 		<div class="profile-img">
@@ -34,16 +37,16 @@
 		</div>
 		<div class="profile-info">
 			<div class="name">missy_elliot</div>
-			<div class="location">New York, New York</div>
+			<div class="location">{{ image_item.location }}</div>
 		</div>
 		</div>
 		<div class="content">
-			<img src="https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?dpr=1&auto=compress,format&fit=crop&w=342&h=&q=80&cs=tinysrgb&crop=" class="content" />
+			<img src="{{ image_item.picture.url}}" class="content" />
 		</div>
 		<div class="card-footer">
 			<div class="footer-content">
 				<span class="likes">241 likes</span>
-					<p><span>missy_elliot</span> Currently starring in my own reality show titled, A Modern Cinderella; One Girl’s Search for Love and Shoe.</p>
+					<p><span>missy_elliot</span> {{image_item.caption}}</p>
 					<p><span>gary_9198</span> Good Luck!! :D </p>
 					<p><span>samantha_george</span> Beautiful Picture ♥ </p>
 					<p><span>charlie.david</span> Heeyyy </p>
@@ -85,6 +88,7 @@
 			</div>
 		</div>
 	</div>
+	{% endfor %}
 	</section>
 </body>
 

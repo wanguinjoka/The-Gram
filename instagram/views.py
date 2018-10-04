@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Image
 
 # Create your views here.
-def welcome(request):
-    return render(request, 'home.html')
+def all_images(request):
+    images = Image.display_images()
+    return render(request, 'home.html', {"images":images})
