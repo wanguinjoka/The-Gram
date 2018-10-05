@@ -33,7 +33,7 @@
 		<div class="card">
 		<div class="card-header">
 		<div class="profile-img">
-			<img class="profile-img" src="https://i.pinimg.com/736x/a2/e1/8c/a2e18cbfbcaa8756fe5b40f472eeff45--profile-   picture-profile-pics.jpg"/>
+			<img class="profile-img" src="{{user.profile.user_pic}}"/>
 		</div>
 		<div class="profile-info">
 			<div class="name">missy_elliot</div>
@@ -49,8 +49,8 @@
 					<p><span>missy_elliot</span> {{image_item.caption}}</p>
 
 					{% for comment in image_item.comments.all %}
-					<p><span>gary_9198</span> {{comment.caption}} </p>
-					
+					<p><span><img class="profile-img" src="{{user.profile.user_pic}}"/></span><span>{{ user.username}}</span> {{comment.caption}} </p>
+
 					{% endfor %}
 				<form class="form">
 					<span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>

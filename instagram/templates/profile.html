@@ -10,20 +10,26 @@
 {% block content %}
 {{block.super}}
 <header>
+    {% if profile %}
+      <h2>Found profile of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 articles for the search term {{message}}</h2>
+    {% endif %}
 
 	<div class="container">
-
+        {% if profile %}
+{% for profile_item in profile %}
 		<div class="profile">
 
 			<div class="profile-image">
 
-				<img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+				<img src="{{user.profile.user_pic}}" alt="">
 
 			</div>
 
 			<div class="profile-user-settings">
 
-				<h1 class="profile-user-name">janedoe_</h1>
+				<h1 class="profile-user-name">{{ user. username}}</h1>
 
 				<button class="btn profile-edit-btn">Edit Profile</button>
 
@@ -43,7 +49,7 @@
 
 			<div class="profile-bio">
 
-				<p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit</p>
+				<p><span class="profile-real-name">{{user.username}}</span>{{user.profile.bio}}</p>
 
 			</div>
 
@@ -272,7 +278,7 @@
 						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 30</li>
 						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
 					</ul>
-
+{% endfor %}
 				</div>
 
 			</div>
