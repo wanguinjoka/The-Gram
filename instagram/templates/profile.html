@@ -11,9 +11,10 @@
 {{block.super}}
 <header>
     {% if profile %}
-      <h2>Found profile of searched term {{message}}</h2>
+      <h2>Found profile of person {{message}}</h2>
     {% else %}
-      <h2> Found 0 articles for the search term {{message}}</h2>
+      <h2> Found 0 people for the search name entered </h2>
+      <h2>{{message}}</h2>
     {% endif %}
 
 	<div class="container">
@@ -29,7 +30,7 @@
 
 			<div class="profile-user-settings">
 
-				<h1 class="profile-user-name">{{ user. username}}</h1>
+				<h1 class="profile-user-name">{{ user.username}}</h1>
 
 				<button class="btn profile-edit-btn">Edit Profile</button>
 
@@ -280,7 +281,7 @@
 					</ul>
 {% endfor %}
 				</div>
-
+{% endif %}
 			</div>
 
 		</div>
