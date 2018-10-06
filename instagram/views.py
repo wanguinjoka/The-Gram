@@ -10,7 +10,9 @@ def all_images(request):
     Function to display all pictures at homepage
     '''
     images = Image.display_images()
-
+    '''
+    comment Function
+    '''
     current_user = request.user
     if request.method == 'POST':
         form = CommentForm(request.POST, request.FILES)
@@ -46,6 +48,9 @@ def search_profile(request):
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
+    '''
+    function to create new image post by logined in user
+    '''
     current_user = request.user
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)
@@ -59,22 +64,13 @@ def new_post(request):
         form = NewPostForm()
     return render(request, 'new_post.html',{"form":form})
 
-@login_required(login_url = '/accounts/login/')
-def post_comment(request):
-    current_user = request.user
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.author = current_user
-            comment.save()
-        return redirect('all_images')
-    else:
-        form = CommentForm()
-    return render(request, 'home.html', {"form":form })
+
 @login_required
 def my_profile(request,profile_id):
-    currrent_id = request.user.# IDEA:
+    '''
+    Function to display current user profilepage
+    '''
+    currrent_id = request.user.id
     current_profile = Profile.objects.get(id=profile_id)
     try:
         profile_details = Profile.objects.get(id=profile_id)
