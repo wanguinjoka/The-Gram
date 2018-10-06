@@ -6,6 +6,9 @@ from .forms import WelcomeForm, NewPostForm ,CommentForm
 # Create your views here.
 @login_required(login_url = '/accounts/login/')
 def all_images(request):
+    '''
+    Function to display all pictures at homepage
+    '''
     images = Image.display_images()
 
     current_user = request.user
@@ -21,6 +24,10 @@ def all_images(request):
     return render(request, 'home.html', {"form":form, "images":images })
 
 def search_profile(request):
+
+    '''
+    Function to search profile by name
+    '''
 
     if 'profile' in request.GET and request.GET["profile"]:
         search_term = request.GET.get("profile")
@@ -65,3 +72,15 @@ def post_comment(request):
     else:
         form = CommentForm()
     return render(request, 'home.html', {"form":form })
+@login_required
+def my_profile(request,profile_id):
+    currrent_id = request.user.# IDEA:
+    current_profile = Profile.objects.get(id=profile_id)
+    try:
+        profile_details = Profile.objects.get(id=profile_id)
+    except DoesNotExist:
+        raise Http404()
+
+    images = Image.objects.filter(profile=current_profile)
+
+    return render (request, 'profile.html',{"profile_details":profile_details,"images":images,"current_id":current_id})
