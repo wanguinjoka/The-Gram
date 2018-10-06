@@ -26,7 +26,7 @@ class Image(models.Model):
 
 
 class Comment(models.Model):
-    caption = models.TextField()
+    comment = models.CharField(max_length =60,blank=True)
     image = models.ForeignKey(Image, related_name = 'comments', on_delete=models.CASCADE)
     author = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
 

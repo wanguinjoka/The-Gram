@@ -14,4 +14,4 @@ class NewPostForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        exclude =['author']
+        exclude =['author', 'image']
