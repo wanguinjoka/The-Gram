@@ -55,11 +55,11 @@
 					<form  action="{% url 'allimages'%}" method="post" enctype="multipart/form-data">
 				      {%csrf_token%}
 
-				      {% bootstrap_form form%}
-				      <input type="submit" class="btn btn-success" value="Comment">
-					  <div class="input-group-btn">
-						<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-					  </div>
+					  <div class="input-group">
+		  			  <input type="text" class="form-control" placeholder="Comment" name="comment">
+		  			  <div class="input-group-btn">
+						<input class="btn btn-default" type="submit"><i class="glyphicon glyphicon-cog"></i></button>
+					</div>
 				    </form>
 		</div>
 	</div>

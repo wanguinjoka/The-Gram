@@ -48,5 +48,10 @@ class Profile(models.Model):
         profiles = cls.objects.get(name__icontains=search_term)
         return profiles
 
+    @classmethod
+    def get_profile(cls):
+        profile=Profile.objects.all()
+        return profile
+
     def __str__(self):
         return '{0}'.format(self.user.username)
