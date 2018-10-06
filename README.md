@@ -5,6 +5,8 @@
 ## Description
 This app is a clone of the widely propular Instagram implemented using Django 1.11 framework.
 ## User Stories
+* Sign in to the application to start using.
+* Upload my pictures to the application.
 * View images on home page
 * Search profile of users
 * Comment on images
