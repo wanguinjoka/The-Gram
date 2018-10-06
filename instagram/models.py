@@ -39,13 +39,14 @@ class Comment(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
     bio = models.TextField(max_length =500, blank=True)
     user_pic = models.ImageField(upload_to = 'images/', blank=True)
 
     @classmethod
     def search_by_username(cls,search_term):
-        profile = cls.objects.get(user__username__icontains=search_term)
-        return profile
+        profiles = cls.objects.get(name__icontains=search_term)
+        return profiles
 
     def __str__(self):
         return '{0}'.format(self.user.username)

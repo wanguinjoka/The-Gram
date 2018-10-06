@@ -33,7 +33,7 @@
 		<div class="card">
 		<div class="card-header">
 		<div class="profile-img">
-			<img class="profile-img" src="{{user.profile.user_pic}}"/>
+			<img class="profile-img" src="{{user.profile.user_pic.url}}"/>
 		</div>
 		<div class="profile-info">
 			<div class="name">{{image_item.author.username}}</div>
@@ -49,21 +49,15 @@
 					<p><span>{{image_item.author.username}}</span> {{image_item.caption}}</p>
 
 					{% for comment in image_item.comments.all %}
-					<p><span><img class="profile-img" src="{{user.profile.user_pic}}"/></span><span>{{ user.username}}</span> {{comment.caption}} </p>
+					<p><span><img class="profile-img" src="{{user.profile.user_pic.url}}"/></span><span>{{ user.username}}</span> {{comment.caption}} </p>
 
 					{% endfor %}
 					<form  action="{% url 'allimages'%}" method="post" enctype="multipart/form-data">
 				      {%csrf_token%}
 
 				      {% bootstrap_form form%}
-				      <input type="submit" class="btn btn-success btn-lg" value="Post">
+				      <input type="submit" class="btn btn-success" value="Comment">
 				    </form>
-				<form class="form">
-					<span class="heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-					<span class="add-comment"><input type="text" placeholder="Add a comment..." /></span>
-					<span class="options"><i class="fa fa-ellipsis-h"></i></span>
-				</form>
-			</div>
 		</div>
 	</div>
 
