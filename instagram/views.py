@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from .models import Image,Comment
+from .models import Image,Comment,Profile
 from .forms import WelcomeForm, NewPostForm ,CommentForm
 
 # Create your views here.
@@ -24,7 +24,7 @@ def search_profile(request):
 
     if 'profile' in request.GET and request.GET["profile"]:
         search_term = request.GET.get("profile")
-        searched_profiles =Profile.search_by_username(search_term)
+        searched_profiles =Profile.search_by_name(search_term)
 
         message = f"{search_term}"
 
