@@ -10,7 +10,7 @@
 {% block content %}
 {{block.super}}
 <header>
-    {% if profile %}
+    {% if profiles %}
       <h2>Found profile of person {{message}}</h2>
     {% else %}
       <h2> Found 0 people for the search name entered </h2>
@@ -18,13 +18,13 @@
     {% endif %}
 
 	<div class="container">
-        {% if profile %}
-{% for profile_item in profile %}
+        {% if profiles %}
+{% for profile_item in profiles %}
 		<div class="profile">
 
 			<div class="profile-image">
 
-				<img src="{{profile.user_pic.url}}" alt="">
+				<img src="{{user.profile.user_pic.url}}" alt="">
 
 			</div>
 
@@ -50,7 +50,7 @@
 
 			<div class="profile-bio">
 
-				<p><span class="profile-real-name">{{profile.name}}</span>{{profile.bio}}</p>
+				<p><span class="profile-real-name">{{user.profile.name}}</span>{{user.profile.bio}}</p>
 
 			</div>
 

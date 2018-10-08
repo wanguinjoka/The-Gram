@@ -6,7 +6,7 @@ from . import views
 urlpatterns=[
     url('^$', views.all_images, name ='allimages'),
     url(r'^search/', views.search_profile, name='search_profile'),
-    url(r'^profile/(\d+)', views.my_profile, name='Profile'),
+    url(r'^profile/(\d+)', views.my_profile, name='myprofile'),
     url(r'^new/image$', views.new_post, name = 'new_post')
 
     ]

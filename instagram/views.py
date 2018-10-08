@@ -10,20 +10,8 @@ def all_images(request):
     Function to display all pictures at homepage
     '''
     images = Image.display_images()
-    '''
-    comment Function
-    '''
-    current_user = request.user
-    if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.author = current_user
-            comment.save()
-        return redirect('all_images')
-    else:
-        form = CommentForm()
-    return render(request, 'home.html', {"form":form, "images":images })
+
+    return render(request, 'home.html', {"images":images })
 
 def search_profile(request):
 
@@ -43,13 +31,13 @@ def search_profile(request):
         message = "You haven't searched for any term"
         return render (request,'profile.html',{"message":message})
 
-    return render(request, 'profile.html',{"profile":profile})
+
 
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     '''
-    function to create new image post by logined in user
+    Function to create new image post by logined in user
     '''
     current_user = request.user
     if request.method == 'POST':
@@ -63,6 +51,21 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html',{"form":form})
+
+
+@login_required(login_url='/accounts/login/')
+def new_comment(request):
+    current_user =request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = current_user
+            comment.save()
+        return redirect('all_images')
+    else:
+        form = CommentForm()
+    return render(request, 'home.html',{"form":form})
 
 
 @login_required
@@ -79,4 +82,4 @@ def my_profile(request,profile_id):
 
     images = Image.objects.filter(profile=current_profile)
 
-    return render (request, 'profile.html',{"profile_details":profile_details,"images":images,"current_id":current_id})
+    return render (request, 'myprofile.html',{"profile_details":profile_details,"images":images,"current_id":current_id})

@@ -45,7 +45,7 @@ class Profile(models.Model):
 
     @classmethod
     def search_by_name(cls,search_term):
-        profiles = cls.objects.get(name__icontains=search_term)
+        profiles = cls.objects.filter(name__icontains=search_term)
         return profiles
 
     @classmethod
@@ -53,5 +53,7 @@ class Profile(models.Model):
         profile=Profile.objects.all()
         return profile
 
+
+
     def __str__(self):
-        return '{0}'.format(self.user.username)
+        return f'{self.user.username} Profile'
