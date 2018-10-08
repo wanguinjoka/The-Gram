@@ -30,7 +30,7 @@ This app is a clone of the widely propular Instagram implemented using Django 1.
 
 
 ## live link to the application
-* http://transform-gallery.herokuapp.com
+* https://thegraminsta.herokuapp.com/
 
 ## Technologies Used
 * Python3
