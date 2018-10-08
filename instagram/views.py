@@ -46,7 +46,7 @@ def new_post(request):
             image = form.save(commit=False)
             image.author = current_user
             image.save()
-        return redirect('all_images')
+        return redirect('allimages')
 
     else:
         form = NewPostForm()
@@ -57,12 +57,12 @@ def new_post(request):
 def new_comment(request):
     current_user =request.user
     if request.method == 'POST':
-        form = CommentForm(request.POST, request.FILES)
+        form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
+            comment = form.save(commit=True)
             comment.author = current_user
             comment.save()
-        return redirect('all_images')
+        return redirect('allimages')
     else:
         form = CommentForm()
     return render(request, 'home.html',{"form":form})

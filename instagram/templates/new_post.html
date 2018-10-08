@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Post Image</title>
+
+
   {{form.media}}
 
 {% block styles %} {% bootstrap_css %}
@@ -16,13 +18,15 @@
 </head>
 
 <body>
-
+ <div class="container">
+     <h3>Post Image</h3>
   <form  action="{%url 'new_post'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
     <input type="submit" class="btn btn-success btn-lg" value="Post">
   </form>
+
 
    {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
